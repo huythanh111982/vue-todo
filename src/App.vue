@@ -1,18 +1,54 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>{{text}}</p>
+    <p>{{someNum}}</p>
+    <p>{{status}}</p>
+    <p>{{list}}</p>
+    <p>{{someObject}}</p>
+    <p>{{someObject.a}}</p>
+    <p>{{someObject.b}}</p>
+    <p>{{someObject.c}}</p>
+    <p>{{datafunction}}</p>
+    <p>{{datafunction()}}</p>
+    <p>{{testFunctionA()}}</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import playground from './playground'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  data() {
+    return {
+      text: 'Some string value',
+      someNum:16,
+      status:true,
+      list:[1,2,3],
+      someObject:{
+        a:1,
+        b:2,
+        c:[1,2,3,4,5],
+      },
+      datafunction(){
+          console.log('Data function');
+          return "I am data function";
+        } 
+    }
+  },
+  methods: {
+    testFunctionA() {
+      // eslint-disable-next-line no-debugger
+      debugger;
+      console.log(this.text);
+      console.log(this.someNum);
+      console.log(this.list);
+      console.log(this.someObject.a);
+      this.datafunction();
+      return 'I a test function A'  
+    }
+  },
+  created () {
+    playground();
+  },
 }
 </script>
 
