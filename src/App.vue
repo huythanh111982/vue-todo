@@ -1,64 +1,57 @@
 <template>
-  <div id="app">
-    <p>{{text}}</p>
-    <p>{{someNum}}</p>
-    <p>{{status}}</p>
-    <p>{{list}}</p>
-    <p>{{someObject}}</p>
-    <p>{{someObject.a}}</p>
-    <p>{{someObject.b}}</p>
-    <p>{{someObject.c}}</p>
-    <p>{{datafunction}}</p>
-    <p>{{datafunction()}}</p>
-    <p>{{testFunctionA()}}</p>
+  <div id="app" class="mt-5">
+    <div class="container">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <div class="card-title">Todo list</div>
+          <button
+            class="ml-auto btn btn-sm btn-primary"
+            data-toggle="modal"
+            data-target="#myTodo"
+          >
+            Create
+          </button>
+        </div>
+        <div class="card-body p-0">
+          <todo-list :todos ="todos"/>
+        </div>
+      </div>
+    </div>
+    <todo-create/>
   </div>
 </template>
 
 <script>
-import playground from './playground'
+import TodoList from "@/components/TodoList";
+import TodoCreate from "@/components/TodoCreate"
 export default {
+  components: {
+    TodoList,
+    TodoCreate
+  },
   data() {
     return {
-      text: 'Some string value',
-      someNum:16,
-      status:true,
-      list:[1,2,3],
-      someObject:{
-        a:1,
-        b:2,
-        c:[1,2,3,4,5],
-      },
-      datafunction(){
-          console.log('Data function');
-          return "I am data function";
-        } 
+      todos: [
+        {
+          _id: '1',
+          title: 'Walk the dog',
+          description: 'Go to forrest near the Zoo'
+        },
+        {
+          _id: '2',
+          title: 'Buy a bread',
+          description: 'Whole grain bread would be good'
+        },
+        {
+          _id: '3',
+          title: 'Learn Programming',
+          description: 'Preferable Tomorrow!'
+        }
+      ]
     }
   },
-  methods: {
-    testFunctionA() {
-      // eslint-disable-next-line no-debugger
-      debugger;
-      console.log(this.text);
-      console.log(this.someNum);
-      console.log(this.list);
-      console.log(this.someObject.a);
-      this.datafunction();
-      return 'I a test function A'  
-    }
-  },
-  created () {
-    playground();
-  },
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
