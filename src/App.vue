@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <todo-create/>
+    <todo-create @formSubmit="handleCreateTodo"/>
   </div>
 </template>
 
@@ -48,6 +48,11 @@ export default {
           description: 'Preferable Tomorrow!'
         }
       ]
+    }
+  },
+  methods: {
+    handleCreateTodo(newCreate) {
+      this.todos.unshift(newCreate);
     }
   },
 };
