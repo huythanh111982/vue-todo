@@ -8,6 +8,11 @@
 </template>
 <script>
 export default {
-  
+  props: {
+    close: {
+      type: Boolean,
+      default:false 
+    },
+  }
 };
 </script>
