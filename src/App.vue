@@ -23,7 +23,8 @@
 
 <script>
 import TodoList from "@/components/TodoList";
-import TodoCreate from "@/components/TodoCreate"
+import TodoCreate from "@/components/TodoCreate";
+import store from "@/store";
 export default {
   components: {
     TodoList,
@@ -31,28 +32,12 @@ export default {
   },
   data() {
     return {
-      todos: [
-        {
-          _id: '1',
-          title: 'Walk the dog',
-          description: 'Go to forrest near the Zoo'
-        },
-        {
-          _id: '2',
-          title: 'Buy a bread',
-          description: 'Whole grain bread would be good'
-        },
-        {
-          _id: '3',
-          title: 'Learn Programming',
-          description: 'Preferable Tomorrow!'
-        }
-      ]
+      todos: store.state.todos,
     }
   },
   methods: {
     handleCreateTodo(newCreate) {
-      this.todos.unshift(newCreate);
+      store.handleCreateTodo(newCreate);
     }
   },
 };
