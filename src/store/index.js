@@ -19,9 +19,19 @@ const store = {
       },
     ],
   },
-  handleCreateTodo(newCreate) {
-    newCreate._id = cuid();
-    this.state.todos.unshift(newCreate);
-  },
+  actions:{
+    createTodo(state,newCreate) {
+        newCreate._id = cuid();
+        state.todos.unshift(newCreate);
+      },
+  }
+ 
+};
+
+store.dispatch = function(action, payload) {
+  if (!this.actions[action]){
+    throw new Error(`Action ${action} is not defined in the store`)
+  }
+  return this.actions[action](this.state, payload);
 };
 export default store;

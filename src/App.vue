@@ -37,7 +37,8 @@ export default {
   },
   methods: {
     handleCreateTodo(newCreate) {
-      store.handleCreateTodo(newCreate);
+      // store.createTodo(newCreate);
+      store.dispatch('createTodo', newCreate)
     }
   },
 };
